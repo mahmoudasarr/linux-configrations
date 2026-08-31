@@ -1,5 +1,3 @@
-markdown
-
 # New-Fedora-Setup
 
 A bash script to automate my Fedora post-install setup — removes unneeded
@@ -13,3 +11,10 @@ git, gcc/g++), and installs essential apps and Flatpak packages.
 - Security & privacy: KeePassXC, Mullvad VPN, Mullvad Browser
 - Apps: Brave, VirtualBox, Obsidian, Signal, Discord, gThumb.
 - Fonts: Jetbrains, google.
+
+## How to run script?
+
+- Download the script (new-fedora-setup.sh).
+- Open shell and run it.
+- cd Downloads
+- bash new-fedora-setup.sh
