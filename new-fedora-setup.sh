@@ -6,19 +6,20 @@ sudo dnf upgrade --refresh -y
 sudo dnf install \
 https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
 https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
-sudo dnf install gcc automake -y 
+sudo dnf install gcc automake -y
 sudo dnf install akmod-nvidia -y
 sudo dnf install xorg-x11-drv-nvidia-cuda -y
 sudo akmods
 sudo dracut -f
 
 #Programming
+##VSCode
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc &&
 echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null -y
-
 dnf check-update &&
 sudo dnf install code -y
 
+##Git
 sudo dnf install git -y
 
 ##C++
@@ -30,6 +31,7 @@ sudo dnf install @development-tools -y
 sudo dnf group install multimedia -y
 sudo dnf install keepassxc -y
 sudo dnf install gthumb -y
+
 ##Brave-Origin
 sudo dnf install dnf-plugins-core -y
 sudo dnf config-manager addrepo --from-repofile=https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo -y
@@ -59,8 +61,14 @@ flatpak install flathub org.standardnotes.standardnotes -y
 flatpak install flathub io.gitlab.librewolf-community -y
 flatpak install flathub org.onlyoffice.desktopeditors -y
 flatpak install flathub org.chromium.Chromium -y
+
 #Fonts
+
+##jetbrains-fonts
 sudo dnf install jetbrains-mono-fonts -y
+
+##Google-fonts
+sudo dnf install -y google-noto-fonts-all -y
 
 #else
 sudo dnf autoremove -y
