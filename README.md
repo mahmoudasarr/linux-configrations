@@ -51,11 +51,10 @@ SyncThingy, Standard Notes, OnlyOffice, Dialect, LocalTranslate
 
 ## How to run
 
-\`\`\`bash
-cd Downloads
-chmod +x new-fedora-setup.sh
-./new-fedora-setup.sh
-\`\`\`
+
+- cd Downloads
+- chmod +x new-fedora-setup.sh
+- ./new-fedora-setup.sh
 
 ## License
 
