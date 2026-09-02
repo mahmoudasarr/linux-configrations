@@ -68,7 +68,7 @@ flatpak install flathub org.chromium.Chromium -y
 
 # ---- Fonts ----
 sudo dnf install jetbrains-mono-fonts -y
-sudo dnf install google-noto-fonts-all -y
+sudo dnf install -y google-noto-fonts-all
 
 # ---- Cleanup ----
 sudo dnf autoremove -y
