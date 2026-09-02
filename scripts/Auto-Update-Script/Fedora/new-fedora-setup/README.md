@@ -1,66 +1,46 @@
-New-Fedora-Setup
-An automated post-install setup script for Fedora Linux, built to save time after a fresh install by handling driver setup, dev environment, essential apps, and cleanup — all in one run.
+# New-Fedora-Setup
 
-# Who is this for?
+An automated post-installation bash script designed to streamline and accelerate the setup process for fresh Fedora Linux installations. It automatically configures hardware drivers, installs development environments, sets up essential privacy-focused applications, and performs system cleanup in a single run.
 
-* Fedora users doing a fresh install who don't want to repeat the same setup steps manually every time
-* Developers who need a ready-to-code environment (VS Code, Git, C/C++ build tools) right after install
-* Users with an Nvidia GPU who need drivers configured correctly
-* Privacy-conscious users — comes with Mullvad VPN, Mullvad Browser, and KeePassXC pre-installed
+## Key Features & Use Cases
 
-# Why this script exists
+* **Post-Install Automation:** Eliminates repetitive manual setup tasks following a clean Fedora installation.
+* **Developer-Ready:** Configures a full development environment out of the box (VS Code, Git, C/C++ toolchains).
+* **Nvidia GPU Support:** Automatically enables RPM Fusion and configures official Nvidia drivers and CUDA libraries.
+* **Privacy & Security Focused:** Pre-installs privacy-centric software including Mullvad VPN, Mullvad Browser, and KeePassXC.
 
-Setting up Fedora from scratch usually means repeating 20+ manual steps: adding repos, installing drivers, remembering which apps you always use.
-This script automates all of that into one command — so a fresh Fedora install becomes a fully working, developer-ready system in minutes instead of hours.
+## ⚠️ Important Considerations Before Running
 
-# ⚠️ Before you run it
+This script is tailored to a specific workstation workflow. **Please review the script contents before executing:**
 
-This script is based on my personal setup. Please read it before running:
+* **Software Removals:** Removes default installations of **LibreOffice** and **Firefox**.
+* **Hardware Requirements:** Includes Nvidia GPU driver installation (comment out if using Intel/AMD graphics).
+* **Interrupted Updates:** If the system update process halts, reboot your system and re-run the script.
+* **Customization:** Feel free to open `new-fedora-setup.sh` and comment out (`#`) any software or steps you do not require.
 
-* It removes LibreOffice and Firefox by default
-* It installs Nvidia drivers (skip that part if you don't have an Nvidia GPU)
-* If the script stops during the update process, please restart your system and run it again
-* Feel free to comment out anything you don't need
+## Software Stack Included
 
-# What it installs
+* **🎮 GPU Drivers:** Nvidia Drivers via RPM Fusion (`akmod-nvidia`), CUDA support
+* **💻 Development Tools:** VS Code, Git, GCC/G++, `development-tools` package group
+* **🔒 Privacy & Security:** KeePassXC, Mullvad VPN, Mullvad Browser
+* **🌐 Web Browsers:** Brave (Official Repo), LibreWolf, Chromium
+* **📦 Virtualization:** VirtualBox
+* **🧩 Productivity (Flatpak):** Obsidian, Signal, Discord, TickTick, Syncthingy, Standard Notes, ONLYOFFICE, Dialect, LocalTranslate
+* **🔤 Typography:** JetBrains Mono, Google Noto Fonts (complete set)
+* **🎬 Multimedia:** RPM Fusion Multimedia Codecs, gThumb
+* **🛠️ System Utilities:** Extension Manager, GNOME Tweaks
 
-🎮 GPU Drivers — Nvidia (RPM Fusion, akmod-nvidia, CUDA)
-💻 Development — VS Code, Git, GCC/G++, development-tools group
-🔒 Security & Privacy — KeePassXC, Mullvad VPN, Mullvad Browser
-🌐 Browsers — Brave (origin build), LibreWolf, Chromium
-📦 Virtualization — VirtualBox
-🧩 Productivity (Flatpak) — Obsidian, Signal, Discord, TickTick, SyncThingy, Standard Notes, OnlyOffice, Dialect, LocalTranslate
-🔤 Fonts — JetBrains Mono, Google Noto Fonts (full set)
-🎬 Media — Multimedia codec group, gThumb
-🛠️ Tools — Extension Manager, Gnome Extension Manager
+## Installation & Execution
 
-# How to run
+Open your terminal and run the following commands:
 
-cd Downloads
+```bash
+cd ~/Downloads
 chmod +x new-fedora-setup.sh
 ./new-fedora-setup.sh
 
-# License
-
-<<<<<<< HEAD
-Feel free to use, modify, or fork this for your own setup.g
-=======
-🧩 **Productivity (Flatpak)** — Obsidian, Signal, Discord, TickTick, 
-SyncThingy, Standard Notes, OnlyOffice, Dialect, LocalTranslate
-
-🔤 **Fonts** — JetBrains Mono, Google Noto Fonts (full set)
-
-🎬 **Media** — Multimedia codec group, gThumb
-
-## How to run
-
-\`\`\`bash
-cd Downloads
-chmod +x new-fedora-setup.sh
-./new-fedora-setup.sh
-\`\`\`
+```
 
 ## License
 
-Feel free to use, modify, or fork this for your own setup.
->>>>>>> parent of 9b74655 (docs: edit-wording)
+This project is open-source. Feel free to use, modify, or fork it to suit your personal setup requirements.
