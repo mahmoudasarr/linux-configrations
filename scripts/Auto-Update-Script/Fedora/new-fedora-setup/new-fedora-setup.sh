@@ -31,7 +31,7 @@ sudo dnf install @development-tools -y
 
 # ---- Packages & Programs ----
 sudo dnf group install multimedia -y
-sudo dnf install gnome-tweaks -y
+#sudo dnf install gnome-tweaks -y
 sudo dnf install keepassxc -y
 sudo dnf install gthumb -y
 
@@ -53,7 +53,7 @@ sudo dnf install VirtualBox -y
 sudo usermod -aG vboxusers $USER
 
 ## Flatpak Apps
-flatpak install flathub com.mattjakeman.ExtensionManager -y
+#flatpak install flathub com.mattjakeman.ExtensionManager -y
 flatpak install flathub md.obsidian.Obsidian -y
 flatpak install flathub org.signal.Signal -y
 flatpak install flathub app.drey.Dialect -y

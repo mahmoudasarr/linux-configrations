@@ -42,4 +42,25 @@ chmod +x new-fedora-setup.sh
 
 # License
 
+<<<<<<< HEAD
 Feel free to use, modify, or fork this for your own setup.g
+=======
+🧩 **Productivity (Flatpak)** — Obsidian, Signal, Discord, TickTick, 
+SyncThingy, Standard Notes, OnlyOffice, Dialect, LocalTranslate
+
+🔤 **Fonts** — JetBrains Mono, Google Noto Fonts (full set)
+
+🎬 **Media** — Multimedia codec group, gThumb
+
+## How to run
+
+\`\`\`bash
+cd Downloads
+chmod +x new-fedora-setup.sh
+./new-fedora-setup.sh
+\`\`\`
+
+## License
+
+Feel free to use, modify, or fork this for your own setup.
+>>>>>>> parent of 9b74655 (docs: edit-wording)
