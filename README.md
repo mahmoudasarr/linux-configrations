@@ -42,4 +42,4 @@ chmod +x new-fedora-setup.sh
 
 # License
 
-Feel free to use, modify, or fork this for your own setup.
+Feel free to use, modify, or fork this for your own setup.g
