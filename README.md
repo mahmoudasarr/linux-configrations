@@ -26,5 +26,5 @@ This repository contains:
 Clone the repository:
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/linux-configrations.git
+git clone https://github.com/mahmoudasarr/linux-configrations.git
 cd linux-configrations
