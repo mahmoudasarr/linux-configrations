@@ -26,8 +26,8 @@ sudo dnf install code -y
 sudo dnf install git -y
 
 ## C++
-sudo dnf install gcc-c++ -y
-sudo dnf install @development-tools -y
+sudo dnf group install "Development Tools" -y
+sudo dnf install -y gcc-c++ cmake ninja-build gdb
 
 # ---- Packages & Programs ----
 sudo dnf group install multimedia -y
