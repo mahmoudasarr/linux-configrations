@@ -1,11 +1,20 @@
 #!/bin/bash
+set -e # If an command fails, the script stops.
 
 # ---- Remove Default Apps ----
+echo "Removing packges..."
+
 sudo dnf remove libreoffice* -y
 # sudo dnf remove firefox -y
+
+# ---- Remove Default Apps ----
+echo "Updating system..."
+
 sudo dnf upgrade --refresh -y
 
 # ---- Nvidia Drivers ----
+echo "Installing NVIDIA drivers..."
+
 sudo dnf install \
 https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
 https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
@@ -26,9 +35,11 @@ sudo dnf install git -y
 
 ## C++
 sudo dnf group install development-tools -y
-sudo dnf install -y gcc-c++ cmake ninja-build gdb
+sudo dnf install -y gcc-c++ cmake ninja-build gdb -y
 
 # ---- Packages & Programs ----
+echo "Installing applications..."
+
 sudo dnf group install multimedia -y
 # sudo dnf install gnome-tweaks -y
 sudo dnf install keepassxc -y
@@ -52,6 +63,7 @@ sudo dnf install VirtualBox -y
 sudo usermod -aG vboxusers $USER
 
 ## Flatpak Apps
+echo "Installing Flatpak applications..."
 # flatpak install flathub com.mattjakeman.ExtensionManager -y
 flatpak install flathub md.obsidian.Obsidian -y
 flatpak install flathub org.signal.Signal -y
@@ -67,10 +79,14 @@ flatpak install flathub org.chromium.Chromium -y
 flatpak update -y
 
 # ---- Fonts ----
+echo "Intalling fonts..."
 sudo dnf install jetbrains-mono-fonts -y
 sudo dnf install -y google-noto-fonts-all
 
 sudo fc-cache -f -v
 
 # ---- Cleanup ----
+echo "Cleaning up..."
 sudo dnf autoremove -y
+
+echo "Setup complete!"
