@@ -2,7 +2,7 @@
 
 # ---- Remove Default Apps ----
 sudo dnf remove libreoffice* -y
-sudo dnf remove firefox -y
+# sudo dnf remove firefox -y
 sudo dnf upgrade --refresh -y
 
 # ---- Nvidia Drivers ----
@@ -19,19 +19,18 @@ sudo dracut -f
 ## VS Code
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
-dnf check-update
 sudo dnf install code -y
 
 ## Git
 sudo dnf install git -y
 
 ## C++
-sudo dnf group install "Development Tools" -y
+sudo dnf group install development-tools -y
 sudo dnf install -y gcc-c++ cmake ninja-build gdb
 
 # ---- Packages & Programs ----
 sudo dnf group install multimedia -y
-#sudo dnf install gnome-tweaks -y
+# sudo dnf install gnome-tweaks -y
 sudo dnf install keepassxc -y
 sudo dnf install gthumb -y
 
@@ -53,7 +52,7 @@ sudo dnf install VirtualBox -y
 sudo usermod -aG vboxusers $USER
 
 ## Flatpak Apps
-#flatpak install flathub com.mattjakeman.ExtensionManager -y
+# flatpak install flathub com.mattjakeman.ExtensionManager -y
 flatpak install flathub md.obsidian.Obsidian -y
 flatpak install flathub org.signal.Signal -y
 flatpak install flathub app.drey.Dialect -y
@@ -65,10 +64,13 @@ flatpak install flathub org.standardnotes.standardnotes -y
 flatpak install flathub io.gitlab.librewolf-community -y
 flatpak install flathub org.onlyoffice.desktopeditors -y
 flatpak install flathub org.chromium.Chromium -y
+flatpak update -y
 
 # ---- Fonts ----
 sudo dnf install jetbrains-mono-fonts -y
 sudo dnf install -y google-noto-fonts-all
+
+sudo fc-cache -f -v
 
 # ---- Cleanup ----
 sudo dnf autoremove -y
