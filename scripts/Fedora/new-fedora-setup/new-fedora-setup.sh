@@ -2,19 +2,16 @@
 set -e # If an command fails, the script stops.
 
 # ---- Remove Default Apps ----
-echo "Removing packges..."
-
-sudo dnf remove libreoffice* -y
+echo "Removing packages..."
+sudo dnf remove 'libreoffice*' -y
 # sudo dnf remove firefox -y
 
 # ---- Remove Default Apps ----
 echo "Updating system..."
-
 sudo dnf upgrade --refresh -y
 
 # ---- Nvidia Drivers ----
 echo "Installing NVIDIA drivers..."
-
 sudo dnf install \
 https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
 https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
@@ -24,26 +21,36 @@ sudo dnf install xorg-x11-drv-nvidia-cuda -y
 sudo akmods
 sudo dracut -f
 
-# ---- Programming Tools ----
-## VS Code
+# ---- Development Tools ----
+echo "Installing development tools..."
+
+## Visual Studio Code
+echo "Installing Visual Studio Code..."
+
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
-sudo dnf install code -y
+sudo dnf install -y code
 
-## Git
-sudo dnf install git -y
+## Development Packages
+echo "Installing development packages..."
 
-## C++
-sudo dnf group install development-tools -y
-sudo dnf install -y gcc-c++ cmake ninja-build gdb -y
+sudo dnf group install -y "development-tools"
+sudo dnf install -y \
+    gcc-c++ \
+    cmake \
+    ninja-build \
+    gdb \
+    git \
+    gh
 
 # ---- Packages & Programs ----
 echo "Installing applications..."
 
 sudo dnf group install multimedia -y
-# sudo dnf install gnome-tweaks -y
-sudo dnf install keepassxc -y
-sudo dnf install gthumb -y
+sudo dnf install -y \
+	keepassxc \
+	gthumb
+	#gnome-tweaks
 
 ## Brave Browser
 sudo dnf install dnf-plugins-core -y
@@ -87,6 +94,7 @@ sudo fc-cache -f -v
 
 # ---- Cleanup ----
 echo "Cleaning up..."
+
 sudo dnf autoremove -y
 
 echo "Setup complete!"
