@@ -36,21 +36,21 @@ echo "Installing development packages..."
 
 sudo dnf group install -y "development-tools"
 sudo dnf install -y \
-    gcc-c++ \
-    cmake \
-    ninja-build \
-    gdb \
-    git \
-    gh
+gcc-c++ \
+cmake \
+ninja-build \
+gdb \
+git \
+gh
 
 # ---- Packages & Programs ----
 echo "Installing applications..."
 
 sudo dnf group install multimedia -y
 sudo dnf install -y \
-	keepassxc \
-	gthumb
-	#gnome-tweaks
+keepassxc \
+gthumb
+#gnome-tweaks
 
 ## Brave Browser
 sudo dnf install dnf-plugins-core -y
