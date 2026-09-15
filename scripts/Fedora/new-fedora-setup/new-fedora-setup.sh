@@ -11,15 +11,22 @@ echo "Updating system..."
 sudo dnf upgrade --refresh -y
 
 # ---- Nvidia Drivers ----
-echo "Installing NVIDIA drivers..."
-sudo dnf install \
-https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
-https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
-sudo dnf install gcc automake -y
-sudo dnf install akmod-nvidia -y
-sudo dnf install xorg-x11-drv-nvidia-cuda -y
-sudo akmods
-sudo dracut -f
+
+if lspci | grep -qi nvidia; then
+    echo "Installing NVIDIA drivers..."
+    sudo dnf install \
+    https://download0.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
+    https://download0.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
+    sudo dnf install gcc automake -y
+    sudo dnf install akmod-nvidia -y
+    sudo dnf install xorg-x11-drv-nvidia-cuda -y
+    sudo akmods
+    sudo dracut -f
+    
+else
+    echo "No NVIDIA GPU detected, skipping."
+fi
+
 
 # ---- Development Tools ----
 echo "Installing development tools..."
