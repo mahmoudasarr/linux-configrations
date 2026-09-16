@@ -48,7 +48,8 @@ cmake \
 ninja-build \
 gdb \
 git \
-gh
+gh \
+clang-tools-extra
 
 # ---- Packages & Programs ----
 echo "Installing applications..."
