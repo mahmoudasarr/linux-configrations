@@ -3,10 +3,10 @@ set -e # If an command fails, the script stops.
 
 # ---- Remove Default Apps ----
 echo "Removing packages..."
-sudo dnf remove 'libreoffice*' -y
+sudo dnf remove 'libreoffice*' -y || echo "libreoffice not found, skipping."
 # sudo dnf remove firefox -y
 
-# ---- Remove Default Apps ----
+# ---- Update System  ----
 echo "Updating system..."
 sudo dnf upgrade --refresh -y
 
@@ -56,7 +56,8 @@ echo "Installing applications..."
 sudo dnf group install multimedia -y
 sudo dnf install -y \
 keepassxc \
-gthumb
+gthumb \
+zsh
 #gnome-tweaks
 
 ## Brave Browser
@@ -98,6 +99,10 @@ sudo dnf install jetbrains-mono-fonts -y
 sudo dnf install -y google-noto-fonts-all
 
 sudo fc-cache -f -v
+
+# ---- Preferences ----
+echo "set zsh as defult shell..."
+sudo chsh -s "$(which zsh)" "$USER"
 
 # ---- Cleanup ----
 echo "Cleaning up..."
